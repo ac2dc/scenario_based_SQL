@@ -7,7 +7,7 @@ AS
 BEGIN 
         select @v_product_code = product_code, @v_price = price
         from product_pr
-        were product_name = 'Iphone 13'
+        where product_name = 'Iphone 13'
 
         INSERT INTO sales_pr(order_date, product_code, quantity_ordered, sales_price)
                 VALUES(cast(getdate() as date), @v_product_code, 1, (@v_price * 1));

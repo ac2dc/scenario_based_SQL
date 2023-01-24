@@ -338,14 +338,14 @@ GO
 
 ------------------ Solution 6 -----------------------------------------
 
-SELECT ROUND(a.shortest,2) as shortest
-FROM (
-        SELECT SQRT(POW((p1.x-p2.x),2)+POW((p1.y-p2.y),2)) as shortest
+SELECT (ROUND(a.shortest,2)) as shortest
+FROM   (
+        SELECT  LIMIT (1 )SQRT(POWER((p1.x-p2.x),2)+POWER((p1.y-p2.y),2)) as shortest
         FROM point_2d AS p1
         CROSS JOIN point_2d AS p2
-        WHERE p1.x!=p2.x OR p1.y!=p2.y
-        ORDER BY SQRT(POW((p1.x-p2.x),2)+POW((p1.y-p2.y),2))
-        LIMIT 1) AS a;
+        WHERE p1.x!= p2.x OR p1.y! = p2.y
+        ORDER BY SQRT(POWER((p1.x-p2.x),2)+POWER((p1.y-p2.y),2))
+       ) AS a;
 
 
 --------------------- Day 7 ------------------------------
