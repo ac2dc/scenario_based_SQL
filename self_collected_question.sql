@@ -44,7 +44,7 @@ where id in (
             JOIN cars c2
             on c1.model = c2.model and c1.brand = c2.brand
             where c1.id < c2.id);
--- Usinf windows funtions
+-- Using windows funtions
 select id  -- use delete to del
 from (
         select *, ROW_NUMBER() over (PARTITION BY model, brand order by model, brand desc) rn 
