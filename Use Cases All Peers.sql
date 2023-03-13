@@ -71,7 +71,8 @@ select * from Trade_tbl
 --Write SQL to find all couples of trade for same stock that happened in the range of 10 seconds and having price difference by more than 10 %.
 --Output result should also list the percentage of price difference between the 2 trade.
 
-select a.trade_id,b.TRADE_ID,floor(abs(((a.Price-b.price)/a.price)*100 )) as per from Trade_tbl a join Trade_tbl bon a.TRADE_ID<b.TRADE_ID where abs(datediff(second,a.trade_timestamp,b.trade_timestamp))<10 and  
+select a.trade_id,b.TRADE_ID,floor(abs(((a.Price-b.price)/a.price)*100 )) as per from Trade_tbl a join Trade_tbl b on a.TRADE_ID<b.TRADE_ID 
+where abs(datediff(second,a.trade_timestamp,b.trade_timestamp))<10 and  
 abs(((a.Price-b.price)/a.price)*100 ) >10
 
 -- DAY 5
