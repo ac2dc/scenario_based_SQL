@@ -46,8 +46,8 @@ Insert into Consulting_engagements values (2354,20001,'10/14/2021 00:00:00','12/
 --The engagements in the consulting_engagements table are complete for the year 2021.
 select employee_id,abs(sum(DATEDIFF(day,start_dates,end_dates)+1)-365) as bench_days from Consulting_engagements c join Staffing s
 on
-s.job_id=c.job_id where is_consultant=1
-group by employee_id
+s.job_id=c.job_id where is_consultant= 1
+group by employee_id;
 
 ---------umeer--------
 
