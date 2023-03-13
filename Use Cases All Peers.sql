@@ -46,8 +46,8 @@ Insert into Consulting_engagements values (2354,20001,'10/14/2021 00:00:00','12/
 --The engagements in the consulting_engagements table are complete for the year 2021.
 select employee_id,abs(sum(DATEDIFF(day,start_dates,end_dates)+1)-365) as bench_days from Consulting_engagements c join Staffing s
 on
-s.job_id=c.job_id where is_consultant=1
-group by employee_id
+s.job_id=c.job_id where is_consultant= 1
+group by employee_id;
 
 ---------umeer--------
 
@@ -71,7 +71,8 @@ select * from Trade_tbl
 --Write SQL to find all couples of trade for same stock that happened in the range of 10 seconds and having price difference by more than 10 %.
 --Output result should also list the percentage of price difference between the 2 trade.
 
-select a.trade_id,b.TRADE_ID,floor(abs(((a.Price-b.price)/a.price)*100 )) as per from Trade_tbl a join Trade_tbl bon a.TRADE_ID<b.TRADE_ID where abs(datediff(second,a.trade_timestamp,b.trade_timestamp))<10 and  
+select a.trade_id,b.TRADE_ID,floor(abs(((a.Price-b.price)/a.price)*100 )) as per from Trade_tbl a join Trade_tbl b on a.TRADE_ID<b.TRADE_ID 
+where abs(datediff(second,a.trade_timestamp,b.trade_timestamp))<10 and  
 abs(((a.Price-b.price)/a.price)*100 ) >10
 
 -- DAY 5
