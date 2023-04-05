@@ -123,6 +123,7 @@ VALUES(
 GO
 
 --------------- SOLUTION -----------------------------
+select * from stadium;
 
 WITH t1 AS (
             SELECT id, 

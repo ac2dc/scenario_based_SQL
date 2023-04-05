@@ -1,3 +1,5 @@
+-- https://www.sqlshack.com/how-to-implement-error-handling-in-sql-server/
+
 USE AdventureWorks2014
 GO
 -- Basic example of TRY...CATCH
@@ -33,8 +35,7 @@ CREATE TABLE DB_Errors
 GO
 
 -- Begining of procedure
-
-CREATE PROCEDURE dbo.AddSale @employeeid INT,
+CREATE OR ALTER PROC dbo.AddSale @employeeid INT,
                    @productid  INT,
                    @quantity   SMALLINT,
                    @saleid     UNIQUEIDENTIFIER OUTPUT
