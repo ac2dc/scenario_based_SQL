@@ -133,9 +133,9 @@ WITH t1 AS (
               FROM stadium
             WHERE people >= 100) 
             
-SELECT t1.id, 
-       t1.visit_date,
-       t1.people
+SELECT id, 
+       people,
+       visit_date
 FROM t1
 LEFT JOIN (
             SELECT dates, 
@@ -341,7 +341,7 @@ GO
 
 SELECT (ROUND(a.shortest,2)) as shortest
 FROM   (
-        SELECT  LIMIT (1 )SQRT(POWER((p1.x-p2.x),2)+POWER((p1.y-p2.y),2)) as shortest
+        SELECT  top 1SQRT(POWER((p1.x-p2.x),2)+POWER((p1.y-p2.y),2)) as shortest
         FROM point_2d AS p1
         CROSS JOIN point_2d AS p2
         WHERE p1.x!= p2.x OR p1.y! = p2.y
@@ -401,10 +401,11 @@ SELECT
  -- First, we'll build a subquery with employeeID, current salary, and prior year salary
  (SELECT 
      id, 
-     salary, 
+     salary,
+     year, 
     -- Using window function lead, we can grab the prior year's salary
     -- Note we could alternatively use LAG and sort our year in ascending order to achieve the same result 
-    LEAD(salary) OVER (PARTITION BY id ORDER BY year DESC) as previous_year_sal 
+    LAG(salary) OVER (PARTITION BY id ORDER BY year ) as previous_year_sal 
   FROM Emp_salaries ) a
 
 -- Only pull records where the current salary is > the prior year salary
